@@ -5,7 +5,7 @@
 - clone branch
 
 ```
-git clone -b pos_v_1.0 https://github.com/saicOo/app_website_pos_laravel.git
+git clone https://github.com/saicOo/exam_system_php.git
 ```
 - Create a database named `exam_system_online`
 
