@@ -2,7 +2,7 @@
 
 ## Getting started
 
-- clone branch app_website_pos_laravel
+- clone branch
 
 ```
 git clone -b pos_v_1.0 https://github.com/saicOo/app_website_pos_laravel.git
