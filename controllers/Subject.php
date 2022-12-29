@@ -52,6 +52,10 @@ public function display(){
 public function storeEQ($request){
     $exam_id = $request['exam_id'];
     $question_id = $request['question_id'];
+    if(empty($exam_id)) $this->messErrors[] = "the input exam is empty";
+    if(empty($question_id)) $this->messErrors[] = "the input question is empty";
+        
+    if($this->messErrors) return $this->messErrors;
     $sql = "SELECT * FROM `exam_question` WHERE `question_id` = $question_id AND `exam_id` = $exam_id";
     $checkRow = $this->conn->query($sql);
     if($checkRow->fetch(PDO::FETCH_ASSOC)){
@@ -69,8 +73,13 @@ public function storeEQ($request){
 ###############################################################
 ########################     insert Exam for Question random  ########
 public function storeEQRand($request){
+    
     $exam_id = $request['exam_id'];
     $subject_id = $request['subject_id'];
+    if(empty($exam_id)){
+        $this->messErrors[] = "the input exam is empty";
+        return  $this->messErrors;
+    }
     $sql = "SELECT * FROM `questions` WHERE subject_id = $subject_id ORDER BY rand() LIMIT 20";
     $result = $this->conn->query($sql);
     foreach($result as $item){

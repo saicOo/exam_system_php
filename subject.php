@@ -55,7 +55,7 @@ require_once "./layouts/header.php";
 <section>
 <div class="container">
 <div class="card text-white bg-dark">
-  <h5 class="card-header">Display Subject</h5>
+  <h5 class="card-header">Display Subjects</h5>
   <div class="card-body">
     <table class="table table-dark">
       <thead>

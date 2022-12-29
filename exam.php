@@ -26,7 +26,7 @@ require_once "./layouts/header.php";
 <section>
 <div class="container py-5">
 <div class="card text-white bg-dark">
-  <h5 class="card-header">Add Subject</h5>
+  <h5 class="card-header">Add Exam</h5>
   <div class="card-body">
   <form method="POST" autocomplete="off">
   <div class="form-group">
@@ -51,7 +51,7 @@ require_once "./layouts/header.php";
 <section>
 <div class="container">
 <div class="card text-white bg-dark">
-  <h5 class="card-header">Display Subject</h5>
+  <h5 class="card-header">Display Exams</h5>
   <div class="card-body">
     <table class="table table-dark">
       <thead>

@@ -59,7 +59,7 @@ require_once "./layouts/header.php";
   <div class="form-group">
   <label>subject name</label>
         <select name="sub_id" class="form-control">
-        <!-- <option value="">Select Subject</option> -->
+        <option value="">Select Subject</option>
         <?php foreach($disblaySub as $item): ?>
             <option value="<?php echo $item['subject_id'] ?>"><?php echo $item['subject_name'] ?></option>
         <?php endforeach ?>																			
