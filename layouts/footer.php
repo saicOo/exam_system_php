@@ -1,10 +1,10 @@
-<script src="/<?php echo $root_path ?>/assets/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="/<?php echo $root_path ?>/assets/js/vendor/bootstrap.min.js"></script>
-<script src="/<?php echo $root_path ?>/assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="<?php echo $root_path ?>/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="<?php echo $root_path ?>/assets/js/vendor/bootstrap.min.js"></script>
+<script src="<?php echo $root_path ?>/assets/js/jquery.ajaxchimp.min.js"></script>
 <!-- notification JS
 ============================================ -->
-<script src="/<?php echo $root_path ?>/assets/js/notifications/Lobibox.js"></script>
-<script src="/<?php echo $root_path ?>/assets/js/notifications/notification-active.js"></script>
+<script src="<?php echo $root_path ?>/assets/js/notifications/Lobibox.js"></script>
+<script src="<?php echo $root_path ?>/assets/js/notifications/notification-active.js"></script>
 
 
 <script>

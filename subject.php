@@ -68,7 +68,7 @@ require_once "./layouts/header.php";
           <?php foreach($disblaySub as $item): ?>
             <tr>
             <td><?php echo $item['subject_name'] ?></td>
-            <td><a href="/<?php echo $root_path ?>/e&q.php?ref=<?php echo $item['subject_id']?>" class="btn btn-success" title="Add questions for exams">Add questions to exam</a></td>
+            <td><a href="<?php echo $root_path ?>/e&q.php?ref=<?php echo $item['subject_id']?>" class="btn btn-success" title="Add questions for exams">Add questions to exam</a></td>
             <td><a  class="btn btn-danger" href="?destroy=<?php echo $item['subject_id'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
             </tr>
             <?php endforeach ?>

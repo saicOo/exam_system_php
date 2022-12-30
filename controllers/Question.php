@@ -1,15 +1,11 @@
 <?php
 require_once "Connect.php";
+require_once 'InitTrait.php';
+
 class Question extends Connect{
-    
+    use InitTrait;
     public $messErrors = [];
     
-    private function getRootPath(){
-        $pieces = explode("/", $_SERVER['REQUEST_URI']); 
-         return $pieces[1];
-           
-    }
-
 ###############################################################
 ########################     display all question      ########
     public function display(){
@@ -110,7 +106,7 @@ class Question extends Connect{
         $result = $this->conn->exec($sql);
         $_SESSION['success'] = "question deleted successfully";
         $root_path = $this->getRootPath();
-        header("location:/$root_path/question.php");
+        header("location:$root_path/question.php");
         exit;
         
     }

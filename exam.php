@@ -68,8 +68,12 @@ require_once "./layouts/header.php";
             <tr>
             <td><?php echo $item['exam_title'] ?></td>
             <td><?php echo $quesCuont ?></td>
-            <td><a  class="btn btn-success" href="/<?php echo $root_path ?>/start_exam.php?ref=<?php echo $item['exam_id'].'&page=1' ?>">start exam</a></td>
-            <td><a  class="btn btn-danger" href="?destroy=<?php echo $item['exam_id']?>" ><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            <?php if($item['status']): ?>
+              <td><a  class="btn btn-success disabled" href="#">wait...</a></td>
+              <?php else: ?>
+                <td><a  class="btn btn-success" href="<?php echo $root_path ?>/start_exam.php?ref=<?php echo $item['exam_id'].'&page=1' ?>">start exam</a></td>
+                <?php endif; ?>
+                <td><a  class="btn btn-danger" href="?destroy=<?php echo $item['exam_id']?>" ><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
           </tr>
           <?php endforeach ?>
         </tbody>

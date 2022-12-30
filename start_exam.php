@@ -7,7 +7,9 @@ function __autoload($class){
 
 $exam = new Exam;
 if(isset($_GET['ref'])){
+    
     $exam_id = $_GET['ref'];
+    
  // **********************************************************//
 // ******** Make sure to return to the start page ******** //
     $page = isset($_GET['page'])?$_GET['page']:1;
@@ -15,8 +17,9 @@ if(isset($_GET['ref'])){
 // ******** show single question index of exam and page ******** //
     $question = $exam->showQuestion($exam_id,$page);
     if(!$question){
-        header("location:/$root_path/subject.php");
+        header("location:$root_path/subject.php");
     }
+    $exam->updateStatusExam($exam_id,1);
     $ques_id = $question['question_id'];
     $ques_type = $question['question_type'];
     $option = $exam->option($ques_id);
@@ -147,7 +150,7 @@ require_once "./layouts/header.php";
     </div>
     <div class="d-flex align-items-center pt-3">
         <div id="prev">
-            <a href="/<?php echo $root_path ?>/result.php?ref=<?php echo $exam_id ?>" class="btn btn-primary">Finish</a>
+            <a href="<?php echo $root_path ?>/result.php?ref=<?php echo $exam_id ?>" class="btn btn-primary">Finish</a>
             <button name="prev" class="btn btn-primary">Previous</button>
         </div>
         <div class="ml-auto mr-sm-5">

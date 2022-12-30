@@ -97,7 +97,7 @@ require_once "./layouts/header.php";
       <ul class="nav justify-content-center">
       <?php foreach($showSub as $item): ?>
   <li class="nav-item">
-    <a class="nav-link text-warning" href="/<?php echo $root_path ?>/question.php?sub=<?php echo $item['subject_id'] ?>"><?php echo $item['subject_name'] ?></a>
+    <a class="nav-link text-warning" href="<?php echo $root_path ?>/question.php?sub=<?php echo $item['subject_id'] ?>"><?php echo $item['subject_name'] ?></a>
   </li>
   <?php endforeach ?>		
 </ul>
@@ -132,7 +132,7 @@ require_once "./layouts/footer.php"; ?>
     console.log(changeT);
     $.ajax({
         method:'POST',
-        url:'/<?php echo $root_path ?>/ajax_question.php',
+        url:'<?php echo $root_path ?>ajax_question.php',
         data: {tests: changeT},
         success: function(data){
             console.log(data);

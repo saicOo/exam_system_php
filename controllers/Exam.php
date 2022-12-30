@@ -1,12 +1,9 @@
 <?php
 require_once "Connect.php";
-class Exam extends Connect{
+require_once 'InitTrait.php';
 
-    private function getRootPath(){
-    $pieces = explode("/", $_SERVER['REQUEST_URI']); 
-     return $pieces[1];
-       
-    }
+class Exam extends Connect{
+    use InitTrait;
     
 ###############################################################
 ########################   display exams index of level  ########
@@ -104,7 +101,7 @@ public function store($request){
         $countExam = $result->fetch(PDO::FETCH_ASSOC);
         $page = $countExam['c'] >= $page ? $page : 1;
         $root_path = $this->getRootPath();
-        header("location:/$root_path/start_exam.php?ref=".$exam_id.'&page='.$page);
+        header("location:$root_path/start_exam.php?ref=".$exam_id.'&page='.$page);
         exit;
     }
 ###############################################################
@@ -120,7 +117,7 @@ public function store($request){
         $countExam = $result->fetch(PDO::FETCH_ASSOC);
         $page = $page != 0 ? $page : $countExam['c'];
         $root_path = $this->getRootPath();
-        header("location:/$root_path/start_exam.php?ref=".$exam_id.'&page='.$page);
+        header("location:$root_path/start_exam.php?ref=".$exam_id.'&page='.$page);
         exit;
     }
 
@@ -145,8 +142,12 @@ public function destroy($exam_id){
     $result = $this->conn->exec($sql);
     $_SESSION['success'] = "exam deleted successfully";
     $root_path = $this->getRootPath();
-    header("location:/$root_path/exam.php");
+    header("location:$root_path/exam.php");
     exit;
     
+}
+public function updateStatusExam($exam_id,$status_value){
+    $update_status = "UPDATE `exams` SET `status`= $status_value WHERE `exam_id` = $exam_id";
+    $this->conn->exec($update_status);
 }
 }

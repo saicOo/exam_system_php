@@ -1,13 +1,9 @@
 <?php
 require_once "Connect.php";
-class Revision extends Connect{
+require_once 'InitTrait.php';
 
-    private function getRootPath(){
-        $pieces = explode("/", $_SERVER['REQUEST_URI']); 
-         return $pieces[1];
-           
-        }
-        
+class Revision extends Connect{
+    use InitTrait;
 ###############################################################
 ########################     display exams of students      ########
     public function totalResult($exam_id){
@@ -34,7 +30,7 @@ class Revision extends Connect{
         $sql = "TRUNCATE TABLE revisions";
         $this->conn->query($sql);
         $root_path = $this->getRootPath();
-        header("location:/$root_path/subject.php");
+        header("location:$root_path/subject.php");
         exit;
     }
 

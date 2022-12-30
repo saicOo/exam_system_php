@@ -1,12 +1,11 @@
 <?php
 require_once "Connect.php";
+require_once 'InitTrait.php';
+
 class Subject extends Connect{
-    public $messErrors = [];
-    private function getRootPath(){
-        $pieces = explode("/", $_SERVER['REQUEST_URI']); 
-         return $pieces[1];
-           
-    }
+
+    use InitTrait;
+
 ###############################################################
 ########################     insert new subjects       ########
 public function store($request){
@@ -98,7 +97,7 @@ public function destroy($sub_id){
     $result = $this->conn->exec($sql);
     $_SESSION['success'] = "subject deleted successfully";
     $root_path = $this->getRootPath();
-        header("location:/$root_path/subject.php");
+        header("location:$root_path/subject.php");
         exit;
     
 }

@@ -2,7 +2,7 @@
 if(isset($_GET['logout'])){
     session_unset();
     session_destroy();
-    header('location:/<?php echo $root_path ?>/login/index.php');
+    header('location:<?php echo $root_path ?>login/index.php');
     exit;
   }
 ?>
@@ -13,7 +13,7 @@ if(isset($_GET['logout'])){
   <!-- Mobile Specific Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="/<?php echo $root_path ?>/assets/img/fav.png" />
+  <link rel="shortcut icon" href="<?php echo $root_path ?>/assets/img/fav.png" />
   <!-- Author Meta -->
   <meta name="author" content="colorlib" />
   <!-- Meta Description -->
@@ -29,12 +29,12 @@ if(isset($_GET['logout'])){
       CSS
       =============================================
     -->
-    <link rel="stylesheet" href="/<?php echo $root_path ?>/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/<?php echo $root_path ?>/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo $root_path ?>/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo $root_path ?>/assets/css/bootstrap.css" />
     <!-- notifications CSS
 		============================================ -->
-    <link rel="stylesheet" href="/<?php echo $root_path ?>/assets/css/notifications/Lobibox.min.css">
-    <link rel="stylesheet" href="/<?php echo $root_path ?>/assets/css/notifications/notifications.css">
+    <link rel="stylesheet" href="<?php echo $root_path ?>/assets/css/notifications/Lobibox.min.css">
+    <link rel="stylesheet" href="<?php echo $root_path ?>/assets/css/notifications/notifications.css">
 </head>
 
 <body style="background: linear-gradient(282deg, var(--gray-dark), #3b4958);color: #fff;">
@@ -47,16 +47,16 @@ if(isset($_GET['logout'])){
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/<?php echo $root_path ?>">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo $root_path ?>/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/<?php echo $root_path ?>/subject.php">subjects</a>
+        <a class="nav-link" href="<?php echo $root_path ?>/subject.php">subjects</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/<?php echo $root_path ?>/question.php">qustions</a>
+        <a class="nav-link" href="<?php echo $root_path ?>/question.php">qustions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/<?php echo $root_path ?>/exam.php">exams</a>
+        <a class="nav-link" href="<?php echo $root_path ?>/exam.php">exams</a>
       </li>
   </div>
 </nav>

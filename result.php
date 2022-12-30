@@ -5,7 +5,10 @@ function __autoload($class){
 }
 
 $revision = new Revision;
-if(isset($_GET['empty'])){
+$exam = new Exam;
+if(isset($_GET['empty'],$_GET['ref'])){
+    $exam_id = $_GET['ref'];
+    $exam->updateStatusExam($exam_id,0);
     $revision->revisionsEmpty();
 }
 if(isset($_GET['ref'])){
@@ -50,7 +53,7 @@ require_once "./layouts/header.php";
             <?php endforeach ?>
         </tbody>
         </table>
-        <a href="?empty=" class="btn btn-danger">Finished</a>
+        <a href="?ref=<?php echo $exam_id ?>&empty=" class="btn btn-danger">Finished</a>
 </div>
 </div>
 </div>
