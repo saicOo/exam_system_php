@@ -18,6 +18,7 @@ if(isset($_GET['ref'])){
     $question = $exam->showQuestion($exam_id,$page);
     if(!$question){
         header("location:$root_path/subject.php");
+        exit;
     }
     $exam->updateStatusExam($exam_id,1);
     $ques_id = $question['question_id'];
