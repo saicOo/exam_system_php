@@ -1,16 +1,12 @@
-# EXAM SYSTEM
+# EXAM SYSTEM v2
 
-## Getting started
+## What's new in this version 2
 
-- clone branch
++ Admin control panel
 
-```
-git clone https://github.com/saicOo/exam_system_php.git
-```
-- Create a database named `exam_system_online`
++ Show the number of visitors to the site
 
-- Open folder `exam_system_php`
++ Supports multiple users
 
-- Go to the folder `DB`
++ Supports user complaints inquiries about the site
 
-- Import File `exam_system_online.sql`
