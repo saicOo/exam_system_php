@@ -72,26 +72,68 @@ public function storeEQ($request){
 ###############################################################
 ########################     insert Exam for Question random  ########
 public function storeEQRand($request){
-    
+
     $exam_id = $request['exam_id'];
     $subject_id = $request['subject_id'];
-    if(empty($exam_id)){
-        $this->messErrors[] = "the input exam is empty";
-        return  $this->messErrors;
-    }
+    $this->validationEQRand($exam_id);
     $sql = "SELECT * FROM `questions` WHERE subject_id = $subject_id ORDER BY rand() LIMIT 20";
     $result = $this->conn->query($sql);
-    foreach($result as $item){
-        $question_id = $item['question_id'];
-        $insert = "INSERT INTO `exam_question`(`eq_id`, `exam_id`, `question_id`) VALUES (null,'$exam_id','$question_id')";
-        $this->conn->exec($insert);
-    }
-    $_SESSION['success'] = "subject created successfully";
+    $this->integrationQuestionRand($result,$exam_id);
+    $_SESSION['success'] = "Exam for Question random all created successfully";
     header("Refresh:0");
     exit;
 
 }
 
+###############################################################
+########################     insert Exam for Question random True or Fasle  ########
+public function storeEQRandTrueAndFalse($request){
+    
+    $exam_id = $request['exam_id'];
+    $subject_id = $request['subject_id'];
+    $this->validationEQRand($exam_id);
+    $sql = "SELECT * FROM `questions` WHERE question_type = 'true or false' AND subject_id = $subject_id ORDER BY rand() LIMIT 20";
+    $result = $this->conn->query($sql);
+    $this->integrationQuestionRand($result,$exam_id);
+    $_SESSION['success'] = "Exam for Question random True or Fasle created successfully";
+    header("Refresh:0");
+    exit;
+
+}
+###############################################################
+########################     insert Exam for Question random multiple choice  ########
+public function storeEQRandChoice($request){
+    
+    $exam_id = $request['exam_id'];
+    $subject_id = $request['subject_id'];
+    $this->validationEQRand($exam_id);
+    $sql = "SELECT * FROM `questions` WHERE question_type = 'multiple choice' AND subject_id = $subject_id ORDER BY rand() LIMIT 20";
+    $result = $this->conn->query($sql);
+    $this->integrationQuestionRand($result,$exam_id);
+    $_SESSION['success'] = "Exam for Question random multiple choice created successfully";
+    header("Refresh:0");
+    exit;
+
+}
+###############################################################
+########################     validation form add question to exam  ########
+private function validationEQRand($exam_id){
+    if(empty($exam_id)){
+        $this->messErrors[] = "the input exam is empty";
+        return  $this->messErrors;
+    }
+}
+###############################################################
+########################     integration question to exam  ########
+private function integrationQuestionRand($result,$exam_id){
+    foreach($result as $item){
+        $question_id = $item['question_id'];
+        $insert = "INSERT INTO `exam_question`(`eq_id`, `exam_id`, `question_id`) VALUES (null,'$exam_id','$question_id')";
+        $this->conn->exec($insert);
+    }
+}
+###############################################################
+########################     delete subject  ########
 public function destroy($sub_id){
     $sql = "DELETE FROM subjects WHERE `subject_id` = $sub_id";
     $result = $this->conn->exec($sql);

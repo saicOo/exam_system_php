@@ -133,7 +133,7 @@ require_once "./layouts/footer.php"; ?>
     console.log(changeT);
     $.ajax({
         method:'POST',
-        url:'<?php echo $root_path ?>ajax_question.php',
+        url:'<?php echo $root_path ?>/ajax_question.php',
         data: {tests: changeT},
         success: function(data){
             console.log(data);

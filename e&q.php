@@ -19,6 +19,20 @@ if(isset($_POST['submitRand'])){
     );
     $subject->storeEQRand($request);
 }
+if(isset($_POST['submitRandTF'])){
+    $request = array(
+        'exam_id'=> $_POST['exam_id'],
+        'subject_id'=> $ref,
+    );
+    $subject->storeEQRandTrueAndFalse($request);
+}
+if(isset($_POST['submitRandC'])){
+    $request = array(
+        'exam_id'=> $_POST['exam_id'],
+        'subject_id'=> $ref,
+    );
+    $subject->storeEQRandChoice($request);
+}
 if(isset($_POST['submit'])){
     $request = array(
         'exam_id'=> $_POST['exam_id'],
@@ -67,7 +81,9 @@ require_once "./layouts/header.php";
 		</select>
 </div>
   <button name="submit" type="submit" class="btn btn-primary">Add</button>
-  <button name="submitRand" type="submit" class="btn btn-info">Random Add</button>
+  <button name="submitRand" type="submit" class="btn btn-info">Random Add All</button>
+  <button name="submitRandTF" type="submit" class="btn btn-info">Random Add True&False</button>
+  <button name="submitRandC" type="submit" class="btn btn-info">Random Add choice</button>
 </form>
   </div>
 </div>

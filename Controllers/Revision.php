@@ -26,7 +26,7 @@ class Revision extends Connect{
     }
 ###############################################################
 ########################     result exam student      ########
-    public function revisionsEmpty(){
+    public function revisionsEmpty($exam_id){
         $sql = "DELETE FROM revisions WHERE `exam_id` = $exam_id";
     $result = $this->conn->exec($sql);
     if(isset($_SESSION['exam_id'])) unset($_SESSION['exam_id']);
