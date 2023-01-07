@@ -121,7 +121,60 @@ require_once "./layouts/header.php";
 </div>
 </div>
 </section>
-
+<br>
+<section>
+<div class="container pb-5">
+<div class="card text-white bg-dark">
+  <h5 class="card-header">Display Questions True or False</h5>
+  <div class="card-body" style="height: 256px;overflow-y: scroll;">
+  <a href="<?php echo $root_path ?>/question_edit.php?question_type=true or false" class="btn btn-info m-2">edit</a>
+      <table class="table table-dark">
+          <thead>
+              <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($question->displayOfType('true or false') as $item): ?>
+            <tr>
+            <td><?php echo $item['question_title'] ?></td>
+            <td><a  class="btn btn-danger" href="?destroy=<?php echo $item['question_id']?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+        </table>
+</div>
+</div>
+</div>
+</section>
+<br>
+<section>
+<div class="container pb-5">
+<div class="card text-white bg-dark">
+  <h5 class="card-header">Display Questions chosse</h5>
+  <div class="card-body" style="height: 256px;overflow-y: scroll;">
+  <a href="<?php echo $root_path ?>/question_edit.php?question_type=multiple choice" class="btn btn-info m-2">edit</a>
+      <table class="table table-dark">
+          <thead>
+              <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($question->displayOfType('multiple choice') as $item): ?>
+            <tr>
+            <td><?php echo $item['question_title'] ?></td>
+            <td><a  class="btn btn-danger" href="?destroy=<?php echo $item['question_id']?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+        </table>
+</div>
+</div>
+</div>
+</section>
 
 <?php
  //start footer area 

@@ -13,6 +13,13 @@ class Question extends Connect{
         $result = $this->conn->query($sql);
         return $result;
     }
+    ############################################################### //new
+########################     display all question choice      ########
+public function displayOfType($question_type){
+    $sql = "SELECT * FROM `questions` WHERE question_type = '$question_type' ORDER BY question_id DESC";
+    $result = $this->conn->query($sql);
+    return $result;
+}
 ###############################################################
 ########################     show question      ########
     public function show($subject_id){
