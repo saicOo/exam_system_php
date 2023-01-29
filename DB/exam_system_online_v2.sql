@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2023 at 09:32 AM
+-- Generation Time: Jan 29, 2023 at 10:43 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -35,6 +35,13 @@ CREATE TABLE `admins` (
   `role` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`) VALUES
+(1, 'admin', 'admin@app.com', '$2y$10$fYJEC3cct83GPHocNA2vceKatYrRz7pJud6v9NiDmv6hOITvHv7R2', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -45,7 +52,8 @@ CREATE TABLE `exams` (
   `exam_id` int(11) NOT NULL,
   `exam_title` varchar(200) NOT NULL,
   `subject_id` int(11) NOT NULL,
-  `status` tinyint(1) DEFAULT 0
+  `status` tinyint(1) DEFAULT 0 COMMENT '0 = no question ,1= busy ,2= rady',
+  `total_question` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -97,7 +105,7 @@ CREATE TABLE `revisions` (
   `revision_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
-  `answar_option` enum('1','2','3','4') NOT NULL,
+  `answar_option` enum('1','2','3','4') DEFAULT NULL,
   `marks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -133,6 +141,13 @@ CREATE TABLE `traffic` (
   `id` int(11) NOT NULL,
   `traffic_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `traffic`
+--
+
+INSERT INTO `traffic` (`id`, `traffic_count`) VALUES
+(1, 0);
 
 --
 -- Indexes for dumped tables
@@ -208,7 +223,7 @@ ALTER TABLE `traffic`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `exams`
@@ -256,7 +271,7 @@ ALTER TABLE `subscribe`
 -- AUTO_INCREMENT for table `traffic`
 --
 ALTER TABLE `traffic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
