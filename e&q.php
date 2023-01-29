@@ -17,28 +17,28 @@ if(isset($_POST['submitRand'])){
         'exam_id'=> $_POST['exam_id'],
         'subject_id'=> $ref,
     );
-    $subject->storeEQRand($request);
+    $exam->storeEQRand($request);
 }
 if(isset($_POST['submitRandTF'])){
     $request = array(
         'exam_id'=> $_POST['exam_id'],
         'subject_id'=> $ref,
     );
-    $subject->storeEQRandTrueAndFalse($request);
+    $exam->storeEQRandTrueAndFalse($request);
 }
 if(isset($_POST['submitRandC'])){
     $request = array(
         'exam_id'=> $_POST['exam_id'],
         'subject_id'=> $ref,
     );
-    $subject->storeEQRandChoice($request);
+    $exam->storeEQRandChoice($request);
 }
 if(isset($_POST['submit'])){
     $request = array(
         'exam_id'=> $_POST['exam_id'],
         'question_id'=> $_POST['question_id'],
     );
-    $subject->storeEQ($request);
+    $exam->storeEQ($request);
 }
 }
 
@@ -67,9 +67,13 @@ require_once "./layouts/header.php";
   <div class="form-group">
         <select name="exam_id" class="form-control">
         <option value="">Select Exam</option>
-        <?php foreach($showExam as $item): ?>
+        <?php foreach($showExam as $item): 
+            if($exam->questionCount($item['exam_id']) != $item['total_question']):
+            ?>
             <option value="<?php echo $item['exam_id'] ?>"><?php echo $item['exam_title'] ?></option>
-        <?php endforeach ?>																
+        <?php 
+            endif;
+            endforeach ?>																
 		</select>
 </div>
   <div class="form-group">

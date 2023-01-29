@@ -65,7 +65,7 @@ require_once "./layouts/footer.php";
 
 if(isset($_GET['ref'])){
     $exam_id = $_GET['ref'];
-    $exam->updateStatusExam($exam_id,0);
+    $exam->updateStatusExam($exam_id,2);
     $revision->revisionsEmpty($exam_id);
 }
 ?>

@@ -36,6 +36,23 @@ class Revision extends Connect{
         // header("location:$root_path/exam.php");
         // exit;
     }
-
+###################################################################
+########################     Save the student's answer      ########
+public function satartExam($exam_id){
+    if(!$this->resultStudent($exam_id)->fetch(PDO::FETCH_ASSOC)){
+    $sql = "SELECT exam_question.question_id AS ques_id FROM `exam_question` JOIN exams ON exams.exam_id = exam_question.exam_id
+    JOIN questions ON questions.question_id = exam_question.question_id WHERE exam_question.exam_id = $exam_id";
+    $result = $this->conn->query($sql);
+    $all_questions = $result->fetchAll(PDO::FETCH_ASSOC);
+    if($all_questions){
+        foreach ($all_questions as $question) {
+            $ques_id = $question['ques_id'];
+            $insert = "INSERT INTO `revisions`(`revision_id`, `exam_id`,`question_id`,`answar_option`,`marks`) 
+        VALUES (null,$exam_id,$ques_id,null,'0 mark')";
+            $this->conn->exec($insert);
+        }
+    }
+    }
+}
 
 }

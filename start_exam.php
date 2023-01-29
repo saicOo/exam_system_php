@@ -9,9 +9,11 @@ $exam = new Exam;
 if(isset($_GET['ref'])){
     
     $exam_id = $_GET['ref'];
+    $total_questions = $exam->totalQuestions($exam_id);
+    $revision = new Revision;
+    $revision->satartExam($exam_id);
     if(isset($_SESSION['exam_id']) && $exam_id != $_SESSION['exam_id']){
-        $revision = new Revision;
-            $exam->updateStatusExam($_SESSION['exam_id'],0);
+            $exam->updateStatusExam($_SESSION['exam_id'],2);
             $revision->revisionsEmpty($_SESSION['exam_id']);
             header("location:$root_path/exam.php");
             exit;
@@ -129,6 +131,9 @@ require_once "./layouts/header.php";
 
 <section class="whole-wrap mb-30" style="direction: rtl">
 <div class="container q mt-sm-5 my-1">
+    <div class="text-right">
+        <span class="text-right border border-danger p-2"><?php echo $page . ' : ' .  $total_questions ?></span>
+    </div>
     <div class="question ml-sm-5 pl-sm-5 pt-2">
         <div class="py-2 mb-4 h4"><b><?php echo $question['question_title'] ?></b></div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
